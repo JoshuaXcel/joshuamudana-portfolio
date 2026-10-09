@@ -226,7 +226,7 @@
     [/tutor|teach|class|learn|lesson/i, "Yes! Joshua tutors Python and machine learning, one-on-one or in small groups, from the basics to training and shipping real models. Tap the WhatsApp button to book a session."],
     [/hire|job|collab|contact|email|reach|book/i, "Joshua is open to AI/ML projects, collaborations and tutoring. Email mudanajoshua@gmail.com or WhatsApp +234 906 451 9858."],
     [/where|location|based|live|availab|remote|time ?zone/i, "Joshua is based in Akure, Nigeria (WAT, UTC+1) and works with clients remotely. He's available for AI/ML projects, collaborations and tutoring."],
-    [/experience|excelerate|career|background|xxiv/i, "Joshua is an AI & Machine Learning Engineer. At Excelerate he helped manage 3,000+ interns across global programmes, and he leads XXIV Tech Hub."],
+    [/experience|excelerate|career|background/i, "Joshua is an AI & Machine Learning Engineer. At Excelerate he helped manage 3,000+ interns across global programmes, and he serves on the FUTA Students' Union Judicial Council."],
     [/futa|school|study|student|university|education|degree/i, "Joshua studies Computer Science at FUTA (B.Tech, class of 2028), after an ND in Statistics from the Federal College of Forestry, Jos."],
     [/helpa|emergenc|ambulance/i, "Helpa is one of Joshua's projects, in development and not live yet. It's emergency-contact discovery on WhatsApp: you send one message and it replies with the nearest ambulance, police, fire service or hospital contact, ready to call. No app to install."],
     [/who|about|yourself|name|excel/i, "Joshua Mudana, known as Excel: an AI & Machine Learning Engineer and ML tutor from Jos, based in Akure. Most people use AI. He builds it."],

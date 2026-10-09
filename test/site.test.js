@@ -21,7 +21,7 @@ test("all sections and features exist", () => {
     assert.ok(html.includes(`id="${id}"`), id);
   for (const f of ["all", "ai", "web", "bots"]) assert.ok(html.includes(`data-filter="${f}"`));
   assert.ok(html.includes("Helpa") && html.includes("Tech Skill Assessment System"));
-  assert.ok(html.includes("Excelerate") && html.includes("XXIV Tech Hub"));
+  assert.ok(html.includes("Excelerate") && !/tech hub/i.test(html));
   assert.ok(html.includes("mudanajoshua@gmail.com") && html.includes("wa.me/2349064519858"));
 });
 test("local assets exist and no inline scripts or remote assets", () => {
