@@ -1,0 +1,9 @@
+body{font-family:Inter,system-ui,sans-serif;background:#EEF2FF;color:#0A1638;margin:0;padding:24px 14px;line-height:1.55}
+.cv{max-width:760px;margin:auto;background:#fff;border-radius:16px;padding:32px 26px;box-shadow:0 20px 40px -24px rgba(20,50,140,.35);border-top:6px solid #2F6BFF}
+header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;border-bottom:1px solid #DCE4FF;padding-bottom:16px}
+h1{margin:0;font-size:1.9rem;letter-spacing:-.02em}.role{margin:4px 0 0;color:#1B3FD8;font-weight:600}
+.contact{margin:0;font-size:.85rem;color:#4A5A86}.note{font-size:.8rem;font-style:italic;color:#4A5A86;background:#F4F7FF;padding:8px 12px;border-radius:8px}
+h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:#2F6BFF;margin:22px 0 8px}
+.item{margin:6px 0;font-size:.95rem}.item span{color:#4A5A86;font-size:.82rem;white-space:nowrap;margin-left:6px}
+.back a{color:#1B3FD8;font-weight:600}
+@media print{body{background:#fff;padding:0}.cv{box-shadow:none}.note,.back{display:none}}
