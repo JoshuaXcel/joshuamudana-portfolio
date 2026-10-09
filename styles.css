@@ -404,3 +404,17 @@ p strong{color:var(--text)}
 .p-shot img{width:100%;height:100%;object-fit:cover;object-position:top}
 .p-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
 .btn-sm{padding:9px 16px;font-size:.85rem}
+/* courses */
+.courses{margin-top:48px}
+.courses-title{font-size:1.25rem;margin-bottom:16px}
+.courses-grid{display:grid;gap:16px}
+.course{display:flex;flex-direction:column;padding:22px;border-radius:var(--r);border:1px solid rgba(91,192,255,.45);background:linear-gradient(150deg,rgba(47,107,255,.18),rgba(91,192,255,.04) 60%),var(--card);cursor:pointer;transition:border-color .3s,box-shadow .3s}
+.course:hover{box-shadow:var(--shadow);border-color:rgba(91,192,255,.75)}
+.course h4{font-family:var(--head);font-size:1.15rem;margin:12px 0 12px}
+.course .svc-list{margin-bottom:18px}
+.course .btn{align-self:flex-start;margin-top:auto}
+.course-top{display:flex;align-items:center;justify-content:space-between}
+.course-lock{font-size:1.4rem;width:44px;height:44px;display:grid;place-items:center;border-radius:12px;background:rgba(47,107,255,.18);border:1px solid var(--line)}
+.course-badge{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:999px;color:#fff;background:var(--grad)}
+.status.paid{color:#FFD166;background:rgba(255,209,102,.14)}
+@media (min-width:640px){ .courses-grid{grid-template-columns:1fr 1fr} .course .svc-list{grid-template-columns:1fr} }

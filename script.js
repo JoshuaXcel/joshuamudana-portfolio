@@ -167,6 +167,8 @@
   /* project modal */
   const DATA = {
     dresscode: { status: ["live", "Live"], title: "FUTASU Judicial Council Dress Code", desc: "A responsive web guide to the approved dress code for the FUTA Students' Union Judicial Council swearing-in ceremony, 2026/27 Parliamentary Session. Built for elected officials to check what to wear from their phones.", list: ["Men's and women's tabs: English dress, native dress and footwear", "Photo examples for every accepted style", "A clear not-permitted list", "FAQ accordion and a WhatsApp contact"], tags: ["HTML", "CSS", "JavaScript", "GitHub Pages"], cta: ["View it live", "https://joshuaxcel.github.io/dresscode-app/"] },
+    course_ml: { status: ["paid", "🔒 Paid course"], title: "AI & Machine Learning Course", desc: "🔒 This is a paid course. Chat with Excel on WhatsApp to enrol and make payment.", list: ["Python and NumPy for machine learning", "Supervised learning with scikit-learn", "Neural networks with PyTorch and TensorFlow", "Deploy your model as a FastAPI app"], tags: ["AI", "Machine Learning", "PyTorch", "TensorFlow"], cta: ["Chat on WhatsApp to enrol", "https://wa.me/2349064519858?text=Hi%20Excel%2C%20I%27m%20interested%20in%20your%20AI%20%26%20Machine%20Learning%20course.%20How%20do%20I%20enrol%20and%20pay%3F"] },
+    course_ds: { status: ["paid", "🔒 Paid course"], title: "Data Science Course", desc: "🔒 This is a paid course. Chat with Excel on WhatsApp to enrol and make payment.", list: ["Python, pandas and data cleaning", "Statistics for data science", "Visualisation and telling stories with data", "SQL with MySQL and PostgreSQL, plus a final project"], tags: ["Data Science", "pandas", "Statistics", "SQL"], cta: ["Chat on WhatsApp to enrol", "https://wa.me/2349064519858?text=Hi%20Excel%2C%20I%27m%20interested%20in%20your%20Data%20Science%20course.%20How%20do%20I%20enrol%20and%20pay%3F"] },
     helpa: { status: ["dev", "In development"], title: "Helpa", desc: "A WhatsApp-based emergency contact discovery tool. In an emergency, you send one message and Helpa replies with the nearest ambulance, police, fire service or hospital contact, ready to call.", list: ["One message, no app to install: it lives on WhatsApp", "Finds the closest relevant emergency contact by location", "Covers ambulance, police, fire and hospital contacts", "Designed first for FUTA and Akure"], tags: ["Python", "WhatsApp API", "Geolocation", "Bots"] },
     // TODO: Render URL. When TSAS is live, add to this entry: cta: ["Open the live app", "https://YOUR-APP.onrender.com"]
     tsas: { status: ["soon", "Deploying"], title: "Tech Skill Assessment System", desc: "A FastAPI platform that assesses a learner's tech skills and uses AI to recommend a personal learning path, so they know exactly what to study next.", list: ["Skill assessments across tech tracks", "AI-powered learning recommendations", "FastAPI backend with clean REST endpoints", "Deploying now"], tags: ["FastAPI", "Python", "Machine Learning", "Recommenders"] },
@@ -189,6 +191,10 @@
     p.addEventListener("click", (e) => { if (e.target.closest("a")) return; openModal(p.dataset.project); });
     p.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openModal(p.dataset.project); } });
   });
+  $$(".course").forEach(c => {
+    c.addEventListener("click", () => openModal(c.dataset.course));
+    c.addEventListener("keydown", (e) => { if (e.target === c && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); openModal(c.dataset.course); } });
+  });
   $$("[data-close]", modal).forEach(b => b.addEventListener("click", closeModal));
   $("#mCta").addEventListener("click", () => closeModal());
   addEventListener("keydown", (e) => { if (e.key === "Escape") { if (!modal.hidden) closeModal(); if (!aiPanel.hidden) toggleAI(false); setMenu(false); } });
@@ -210,6 +216,7 @@
   /* Ask my AI: quick answers about Joshua */
   const aiPanel = $("#aiPanel"), aiLaunch = $("#aiLaunch"), aiLog = $("#aiLog"), aiForm = $("#aiForm"), aiText = $("#aiText");
   const KB = [
+    [/course|enrol|enroll|fee|paid|price|class/i, "Joshua runs two paid courses: an AI & Machine Learning Course (Python, scikit-learn, PyTorch and TensorFlow, deploying with FastAPI) and a Data Science Course (pandas, statistics, visualisation, SQL). To enrol and pay, chat with Excel on WhatsApp at +234 906 451 9858."],
     [/service|offer|provide|price|rate|freelance/i, "Joshua offers four services: 1) AI & Machine Learning, his main focus (custom models with PyTorch, TensorFlow and scikit-learn, deployed with FastAPI), 2) Data Science, 3) Web Development (FastAPI with MySQL or PostgreSQL), and 4) Python & ML tutoring."],
     [/build|work on|project|portfolio|ai\b|machine learning|\bml\b|model|deep learning/i, "Joshua builds AI & ML systems: prediction, classification and recommendation models with PyTorch, TensorFlow and scikit-learn, served through FastAPI. His current builds are the Tech Skill Assessment System, which uses AI to recommend what a learner should study next (deploying now), and Helpa, a WhatsApp emergency-contact assistant (in development)."],
     [/database|sql|postgres|mysql/i, "For databases Joshua uses PostgreSQL and MySQL, with SQL and data modelling behind his FastAPI apps."],

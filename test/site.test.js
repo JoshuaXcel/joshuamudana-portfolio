@@ -46,3 +46,8 @@ test("role, stack, services and no demo content", () => {
 test("typing tagline runs at half speed", () => {
   assert.ok(js.includes("setTimeout(step, 2600)") && js.includes("110 + Math.random() * 80") && js.includes("setTimeout(step, 56)"));
 });
+test("paid courses open an enrol prompt to WhatsApp", () => {
+  assert.ok(html.includes('data-course="course_ml"') && html.includes('data-course="course_ds"'));
+  assert.ok(js.includes("This is a paid course. Chat with Excel on WhatsApp to enrol and make payment."));
+  assert.ok(js.includes("wa.me/2349064519858?text=Hi%20Excel"));
+});
