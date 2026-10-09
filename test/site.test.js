@@ -28,7 +28,7 @@ test("local assets exist and no inline scripts or remote assets", () => {
   const refs = [...html.matchAll(/(?:src|href)="([^"#:]+)"/g)].map(m => m[1]);
   for (const r of refs) assert.ok(fs.existsSync(path.join(site, r)), "missing " + r);
   assert.ok(!/<script>(?!<\/script>)/.test(html), "no inline script");
-  assert.ok(!/(src|href)="https?:\/\/(?!wa\.me|github\.com\/JoshuaXcel|joshuaxcel\.github\.io\/dresscode-app)/.test(html), "no remote assets");
+  assert.ok(!/(src|href)="https?:\/\/(?!wa\.me|github\.com\/JoshuaXcel|joshuaxcel\.github\.io\/(dresscode-app|joshuamudana-portfolio))/.test(html), "no remote assets");
   assert.ok(!/TODO|lorem ipsum|\{\{|undefined/i.test(html.replace(/<!--[\s\S]*?-->/g, "")), "no visible TODOs");
 });
 test("script wires the features", () => {
@@ -64,9 +64,14 @@ test("about text, teaching count and projects", () => {
     assert.ok(!/(\d[\d,]*\+?)\s+(students|learners)\s+taught/i.test(t.replace(/12 learners taught/g, "")), "only teaching count is 12");
   }
   assert.ok(html.includes('data-to="3000"') && html.includes("interns managed"), "3,000+ interns managed stays");
-  assert.ok(/secur\|cyber/.test(js) && js.includes("Streamlit"));
+  assert.ok(js.includes("/secur/") && js.includes("cyber") && js.includes("Streamlit"));
   assert.ok(html.includes("<h3>People &amp; Management</h3>") && !html.includes("<h3>People</h3>"), "People & Management card");
   const pm = html.slice(html.indexOf("<h3>People &amp; Management</h3>"), html.indexOf("</article>", html.indexOf("<h3>People &amp; Management</h3>")));
   assert.ok(pm.includes("Team leadership") && pm.includes("3,000+ interns managed"));
   assert.ok(cv.includes("People &amp; Management:") && js.includes("People & Management"));
+});
+test("Ask-my-AI covers the topics and the portfolio card exists", () => {
+  for (const k of ["Streamlit", "12 learners taught at Growth Hub", "3,000+ interns", "security for AI", "system architecture", "FUTA", "mudanajoshua@gmail.com", "Try asking:"]) assert.ok(js.includes(k), k);
+  assert.ok(html.includes('data-project="portfolio"') && html.includes("<h3>Personal Portfolio</h3>"));
+  assert.ok(html.includes('href="https://github.com/JoshuaXcel/joshuamudana-portfolio"') && html.includes("assets/projects/portfolio.webp"));
 });
