@@ -31,7 +31,7 @@
 
   /* typing tagline */
   const typed = $("#typed");
-  const phrases = ["Building Smart Systems", "Training ML Models", "Shipping FastAPI Apps", "Building Smart Systems"];
+  const phrases = ["Building Smart Systems", "Training ML Models", "Deep Learning with PyTorch", "Building Smart Systems"];
   function typeTagline() {
     if (reduce) return;
     let p = 0, i = 0, del = false;
@@ -42,15 +42,15 @@
         typed.textContent = word.slice(0, ++i);
         if (i === word.length) {
           if (p === phrases.length - 1) return; // rest on the main tagline
-          del = true; return setTimeout(step, 1300);
+          del = true; return setTimeout(step, 2600);
         }
-        return setTimeout(step, 55 + Math.random() * 40);
+        return setTimeout(step, 110 + Math.random() * 80);
       }
       typed.textContent = word.slice(0, --i);
-      if (i === 0) { del = false; p++; return setTimeout(step, 250); }
-      setTimeout(step, 28);
+      if (i === 0) { del = false; p++; return setTimeout(step, 500); }
+      setTimeout(step, 56);
     };
-    setTimeout(step, 450);
+    setTimeout(step, 900);
   }
 
   /* nav: scrolled, progress, active, top button */
@@ -88,7 +88,7 @@
   }), { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
   $$(".reveal").forEach(el => io.observe(el));
   function countUp(el) {
-    const to = +el.dataset.to, pad = +(el.dataset.pad || 0), dur = 1800, t0 = performance.now();
+    const to = +el.dataset.to, pad = +(el.dataset.pad || 0), dur = 3600, t0 = performance.now();
     const fmt = n => pad ? String(n).padStart(pad, "0") : n.toLocaleString("en-US");
     if (reduce) { el.textContent = fmt(to); return; }
     const tick = (t) => { const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3); el.textContent = fmt(Math.round(to * e)); if (k < 1) requestAnimationFrame(tick); };
@@ -166,11 +166,11 @@
 
   /* project modal */
   const DATA = {
-    helpa: { status: ["dev", "In development"], title: "Helpa", desc: "A WhatsApp-based emergency contact discovery tool. In an emergency, you send one message and Helpa replies with the nearest ambulance, police, fire service or hospital contact, ready to call.", list: ["One message, no app to install: it lives on WhatsApp", "Finds the closest relevant emergency contact by location", "Covers ambulance, police, fire and hospital contacts", "Launching first at FUTA and across Akure"], tags: ["Python", "WhatsApp API", "Geolocation", "Bots"] },
-    tsas: { status: ["soon", "Deploying soon"], title: "Tech Skill Assessment System", desc: "A FastAPI platform that assesses a learner's tech skills and uses AI to recommend a personal learning path, so they know exactly what to study next.", list: ["Skill assessments across tech tracks", "AI-powered learning recommendations", "FastAPI backend with clean REST endpoints", "Deploying soon"], tags: ["FastAPI", "Python", "Machine Learning", "Recommenders"] },
-    tutor: { status: ["live", "Ongoing"], title: "AI/ML Tutoring", desc: "Hands-on machine learning tutoring for students and beginners. We go from Python basics to cleaning data, training models and shipping them as small apps.", list: ["Project-first lessons with real datasets", "Statistics explained simply", "scikit-learn, pandas and FastAPI", "One-on-one or small groups"], tags: ["Teaching", "Python", "scikit-learn", "Statistics"], cta: ["Book a session on WhatsApp", "https://wa.me/2349064519858?text=Hi%20Joshua%2C%20I%27d%20like%20to%20book%20an%20ML%20tutoring%20session"] },
-    next1: { status: ["ghost", "Coming soon"], title: "Next build", desc: "This is a placeholder card. Swap in your next AI or web project when it's ready to show.", list: ["Project name and one-line pitch", "What it does and who it's for", "Stack and a link to try it"], tags: ["Placeholder"] },
-    next2: { status: ["ghost", "Coming soon"], title: "Coming soon", desc: "A placeholder for a future bot or automation project.", list: ["Problem it solves", "How it works", "Results or users so far"], tags: ["Placeholder"] }
+    dresscode: { status: ["live", "Live"], title: "FUTASU Judicial Council Dress Code", desc: "A responsive web guide to the approved dress code for the FUTA Students' Union Judicial Council swearing-in ceremony, 2026/27 Parliamentary Session. Built for elected officials to check what to wear from their phones.", list: ["Men's and women's tabs: English dress, native dress and footwear", "Photo examples for every accepted style", "A clear not-permitted list", "FAQ accordion and a WhatsApp contact"], tags: ["HTML", "CSS", "JavaScript", "GitHub Pages"], cta: ["View it live", "https://joshuaxcel.github.io/dresscode-app/"] },
+    helpa: { status: ["dev", "In development"], title: "Helpa", desc: "A WhatsApp-based emergency contact discovery tool. In an emergency, you send one message and Helpa replies with the nearest ambulance, police, fire service or hospital contact, ready to call.", list: ["One message, no app to install: it lives on WhatsApp", "Finds the closest relevant emergency contact by location", "Covers ambulance, police, fire and hospital contacts", "Designed first for FUTA and Akure"], tags: ["Python", "WhatsApp API", "Geolocation", "Bots"] },
+    // TODO: Render URL. When TSAS is live, add to this entry: cta: ["Open the live app", "https://YOUR-APP.onrender.com"]
+    tsas: { status: ["soon", "Deploying"], title: "Tech Skill Assessment System", desc: "A FastAPI platform that assesses a learner's tech skills and uses AI to recommend a personal learning path, so they know exactly what to study next.", list: ["Skill assessments across tech tracks", "AI-powered learning recommendations", "FastAPI backend with clean REST endpoints", "Deploying now"], tags: ["FastAPI", "Python", "Machine Learning", "Recommenders"] },
+    tutor: { status: ["live", "Ongoing"], title: "AI/ML Tutoring", desc: "Hands-on machine learning tutoring for students and beginners. We go from Python basics to cleaning data, training models and shipping them as small apps.", list: ["Project-first lessons with real datasets", "Statistics explained simply", "scikit-learn, pandas and FastAPI", "One-on-one or small groups"], tags: ["Teaching", "Python", "scikit-learn", "Statistics"], cta: ["Book a session on WhatsApp", "https://wa.me/2349064519858?text=Hi%20Joshua%2C%20I%27d%20like%20to%20book%20an%20ML%20tutoring%20session"] }
   };
   const modal = $("#modal"); let lastFocus;
   const openModal = (key) => {
@@ -186,26 +186,12 @@
   };
   const closeModal = () => { modal.hidden = true; document.body.classList.remove("locked"); lastFocus && lastFocus.focus({ preventScroll: true }); };
   projects.forEach(p => {
-    p.addEventListener("click", () => openModal(p.dataset.project));
+    p.addEventListener("click", (e) => { if (e.target.closest("a")) return; openModal(p.dataset.project); });
     p.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openModal(p.dataset.project); } });
   });
   $$("[data-close]", modal).forEach(b => b.addEventListener("click", closeModal));
   $("#mCta").addEventListener("click", () => closeModal());
   addEventListener("keydown", (e) => { if (e.key === "Escape") { if (!modal.hidden) closeModal(); if (!aiPanel.hidden) toggleAI(false); setMenu(false); } });
-
-  /* carousel */
-  const slides = $("#slides"), dotsWrap = $("#dots"), n = slides.children.length; let cur = 0, auto;
-  for (let i = 0; i < n; i++) { const b = document.createElement("button"); b.type = "button"; b.setAttribute("aria-label", "Testimonial " + (i + 1)); b.addEventListener("click", () => go(i, true)); dotsWrap.appendChild(b); }
-  const go = (i, user) => { cur = (i + n) % n; slides.style.transform = `translateX(-${cur * 100}%)`; $$("button", dotsWrap).forEach((d, k) => d.classList.toggle("on", k === cur)); if (user) restart(); };
-  const restart = () => { clearInterval(auto); if (!reduce) auto = setInterval(() => go(cur + 1), 4200); };
-  $("#prevSlide").addEventListener("click", () => go(cur - 1, true));
-  $("#nextSlide").addEventListener("click", () => go(cur + 1, true));
-  let sx = null; slides.addEventListener("touchstart", e => sx = e.touches[0].clientX, { passive: true });
-  slides.addEventListener("touchend", e => { if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40) go(cur + (dx < 0 ? 1 : -1), true); sx = null; });
-  go(0); restart();
-
-  /* placeholders */
-  $$(".ph-link").forEach(a => a.addEventListener("click", (e) => { e.preventDefault(); toast(a.dataset.ph + " link coming soon"); }));
 
   /* contact form → mailto */
   $("#contactForm").addEventListener("submit", (e) => {
@@ -218,23 +204,28 @@
     const body = encodeURIComponent(msg.value.trim() + "\n\n— " + name.value.trim() + " (" + email.value.trim() + ")");
     toast("✓ Opening your email app…");
     f.reset();
-    if (!document.documentElement.dataset.demo) setTimeout(() => { location.href = `mailto:mudanajoshua@gmail.com?subject=${subject}&body=${body}`; }, 700);
+    setTimeout(() => { location.href = `mailto:mudanajoshua@gmail.com?subject=${subject}&body=${body}`; }, 700);
   });
 
-  /* Ask my AI (scripted demo) */
+  /* Ask my AI: quick answers about Joshua */
   const aiPanel = $("#aiPanel"), aiLaunch = $("#aiLaunch"), aiLog = $("#aiLog"), aiForm = $("#aiForm"), aiText = $("#aiText");
   const KB = [
-    [/helpa|emergenc|ambulance/i, "Helpa is my WhatsApp emergency tool 🚑 Send one message and it finds the nearest ambulance, police, fire service or hospital contact. It's launching at FUTA and Akure."],
-    [/skill|stack|tech|know|python/i, "Python, machine learning (scikit-learn, pandas, NumPy), FastAPI, statistics and WhatsApp bots. Statistics was my first love, ML came next."],
-    [/tutor|teach|class|learn|lesson/i, "Yes! I tutor AI/ML, from Python basics to training and shipping real models. Tap the WhatsApp button to book a session."],
-    [/hire|work|job|intern|collab|contact|email|reach/i, "I'm open to internships, collaborations and tutoring. Email mudanajoshua@gmail.com or WhatsApp +234 906 451 9858."],
-    [/assess|fastapi|recommend/i, "The Tech Skill Assessment System is built on FastAPI. It assesses your tech skills and uses AI to recommend what to learn next. Deploying soon."],
-    [/experience|growth|excelerate|intern/i, "I'm an ML Intern at Growth Hub (since Oct 2025), and at Excelerate I helped manage 3,000+ interns. I also lead XXIV Tech Hub."],
-    [/futa|school|study|student|university/i, "I study Computer Science at FUTA (B.Tech, class of 2028), after an ND in Statistics from the Federal College of Forestry, Jos."],
-    [/who|about|yourself|name|excel/i, "I'm Joshua Mudana, people call me Excel. An AI/ML engineer and ML tutor from Jos, based in Akure. Most people use AI. I build it."],
-    [/hi|hello|hey/i, "Hey 👋 I'm Excel's AI assistant. Ask me about his projects, skills or tutoring."]
+    [/service|offer|provide|price|rate|freelance/i, "Joshua offers four services: 1) AI & Machine Learning, his main focus (custom models with PyTorch, TensorFlow and scikit-learn, deployed with FastAPI), 2) Data Science, 3) Web Development (FastAPI with MySQL or PostgreSQL), and 4) Python & ML tutoring."],
+    [/build|work on|project|portfolio|ai\b|machine learning|\bml\b|model|deep learning/i, "Joshua builds AI & ML systems: prediction, classification and recommendation models with PyTorch, TensorFlow and scikit-learn, served through FastAPI. His current builds are the Tech Skill Assessment System, which uses AI to recommend what a learner should study next (deploying now), and Helpa, a WhatsApp emergency-contact assistant (in development)."],
+    [/database|sql|postgres|mysql/i, "For databases Joshua uses PostgreSQL and MySQL, with SQL and data modelling behind his FastAPI apps."],
+    [/skill|stack|tech|tool|know|python|tensor|torch|framework/i, "AI & ML first: PyTorch, TensorFlow and scikit-learn, with Python, pandas and NumPy. FastAPI for backends, MySQL and PostgreSQL for databases, plus statistics and WhatsApp bots."],
+    [/data science|data analy|statistic|visuali/i, "Data science is one of Joshua's four services: cleaning, analysis and clear visuals with Python and pandas. He started in statistics (ND Statistics, 2021)."],
+    [/web|site|app\b|judicial|dress/i, "Joshua builds fast, responsive websites and web apps, with FastAPI backends and MySQL or PostgreSQL databases. One live example: the FUTASU Judicial Council swearing-in dress-code guide at joshuaxcel.github.io/dresscode-app."],
+    [/tutor|teach|class|learn|lesson/i, "Yes! Joshua tutors Python and machine learning, one-on-one or in small groups, from the basics to training and shipping real models. Tap the WhatsApp button to book a session."],
+    [/hire|job|collab|contact|email|reach|book/i, "Joshua is open to AI/ML projects, collaborations and tutoring. Email mudanajoshua@gmail.com or WhatsApp +234 906 451 9858."],
+    [/where|location|based|live|availab|remote|time ?zone/i, "Joshua is based in Akure, Nigeria (WAT, UTC+1) and works with clients remotely. He's available for AI/ML projects, collaborations and tutoring."],
+    [/experience|excelerate|career|background|xxiv/i, "Joshua is an AI & Machine Learning Engineer. At Excelerate he helped manage 3,000+ interns across global programmes, and he leads XXIV Tech Hub."],
+    [/futa|school|study|student|university|education|degree/i, "Joshua studies Computer Science at FUTA (B.Tech, class of 2028), after an ND in Statistics from the Federal College of Forestry, Jos."],
+    [/helpa|emergenc|ambulance/i, "Helpa is one of Joshua's projects, in development and not live yet. It's emergency-contact discovery on WhatsApp: you send one message and it replies with the nearest ambulance, police, fire service or hospital contact, ready to call. No app to install."],
+    [/who|about|yourself|name|excel/i, "Joshua Mudana, known as Excel: an AI & Machine Learning Engineer and ML tutor from Jos, based in Akure. Most people use AI. He builds it."],
+    [/\b(hi|hello|hey)\b/i, "Hey 👋 I'm Excel's AI assistant. Ask me about Joshua's AI & ML work, skills, services or tutoring."]
   ];
-  const answer = (q) => { for (const [re, a] of KB) if (re.test(q)) return a; return "Good question! I'm a demo assistant, so I know the basics. Try asking about Helpa, skills, tutoring or how to hire Joshua."; };
+  const answer = (q) => { for (const [re, a] of KB) if (re.test(q)) return a; return "I can tell you about Joshua's AI & ML work, skills, services, tutoring, education or how to hire him."; };
   const addMsg = (who, text) => { const m = document.createElement("div"); m.className = "msg " + who; m.textContent = text; aiLog.appendChild(m); aiLog.scrollTop = aiLog.scrollHeight; return m; };
   let greeted = false, busy = false;
   const toggleAI = (open) => {
@@ -257,6 +248,6 @@
   aiForm.addEventListener("submit", (e) => { e.preventDefault(); ask(aiText.value); });
   $$("#aiChips button").forEach(b => b.addEventListener("click", () => ask(b.textContent)));
 
-  /* expose for demo */
+  /* expose for testing */
   window.__portfolio = { openModal, closeModal, toggleAI, ask, toast };
 })();

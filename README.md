@@ -1,6 +1,6 @@
 # Joshua Mudana · Portfolio
 
-AI/ML engineer. Building Smart Systems.
+AI & Machine Learning Engineer. Building Smart Systems.
 
 Live: https://joshuaxcel.github.io/joshuamudana-portfolio/ · also at https://joshuamudana.sites.tab.bot/
 
