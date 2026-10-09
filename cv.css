@@ -6,4 +6,4 @@ h1{margin:0;font-size:1.9rem;letter-spacing:-.02em}.role{margin:4px 0 0;color:#1
 h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:#2F6BFF;margin:22px 0 8px}
 .item{margin:6px 0;font-size:.95rem}.item span{color:#4A5A86;font-size:.82rem;white-space:nowrap;margin-left:6px}
 .back a{color:#1B3FD8;font-weight:600}
-@media print{body{background:#fff;padding:0}.cv{box-shadow:none}.note,.back{display:none}}
+@media print{body{background:#fff;padding:0}.cv{box-shadow:none}.note,.back{display:none}}.item small.sub{display:block;color:#4A5A86;font-size:.78rem;font-style:italic;margin-top:1px}

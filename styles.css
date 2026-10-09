@@ -207,6 +207,9 @@ p strong{color:var(--text)}
 .t-date{font-family:var(--mono);font-size:.75rem;color:var(--blue2)}
 [data-theme="light"] .t-date{color:var(--royal)}
 .timeline h3{margin:6px 0 2px}
+.timeline li.now::before{background:var(--blue);box-shadow:0 0 0 5px rgba(47,107,255,.25),0 0 18px rgba(47,107,255,.6)}
+.t-sub{font-size:.8rem;color:var(--muted,#8A9AC8);margin:2px 0 6px;font-style:italic}
+.p-owner{font-family:var(--mono);font-size:.72rem;color:var(--blue2);margin:-4px 0 8px;letter-spacing:.02em}
 .t-org{color:var(--text);font-weight:600;font-size:.92rem;margin-bottom:4px}
 .timeline p{font-size:.92rem}
 
@@ -425,3 +428,58 @@ p strong{color:var(--text)}
 .skill-note{margin-top:12px;font-size:.8rem;color:var(--muted)}
 .teach-count{margin-top:-6px;color:var(--muted);font-size:.92rem}
 .teach-count strong{color:var(--text)}
+
+/* real photos */
+.teach-photo{margin-top:40px;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow)}
+.teach-photo img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.teach-photo figcaption{padding:12px 16px;font-size:.88rem;color:var(--muted)}
+.p-shot.p-photo img{object-position:center}
+.contact-me{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.contact-me img{flex:none;width:88px;height:88px;border-radius:50%;object-fit:cover;padding:3px;background:var(--grad);box-shadow:0 0 24px -4px rgba(47,107,255,.6)}
+.contact-me strong{display:block;font-family:var(--head);font-size:1.02rem}
+.contact-me span{display:block;color:var(--muted);font-size:.86rem}
+
+/* About text: slow staggered reveal */
+#about .seq{opacity:0;transform:translateY(22px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1);will-change:opacity,transform}
+#about .seq.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  #about .seq{opacity:1;transform:none;transition:none}
+}
+
+/* Teaching intro: his class photo as a faint background (text stays readable) */
+.teach-intro{position:relative;isolation:isolate;padding:30px 22px 22px;margin:0 -6px;border-radius:var(--r)}
+.teach-bg{position:absolute;inset:-24px -10px;z-index:-1;overflow:hidden;pointer-events:none;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 24%,#000 76%,transparent),linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(180deg,transparent,#000 24%,#000 76%,transparent),linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent);mask-composite:intersect}
+.teach-bg img{width:100%;height:100%;object-fit:cover;object-position:40% 45%;opacity:.4;filter:saturate(.6) blur(1px)}
+.teach-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,color-mix(in srgb,var(--bg2) 35%,transparent),color-mix(in srgb,var(--bg) 50%,transparent))}
+[data-theme="light"] .teach-bg img{opacity:.3;filter:saturate(.5) blur(1px)}
+[data-theme="light"] .teach-bg::after{background:linear-gradient(180deg,color-mix(in srgb,var(--bg2) 50%,transparent),color-mix(in srgb,var(--bg) 60%,transparent))}
+@media (min-width:900px){.teach-intro{padding:36px 30px 26px;margin:0}}
+
+/* About text: his photos as the same faint background as Teaching, crossfading very slowly */
+.about-copy{position:relative;isolation:isolate;padding:30px 22px 22px;margin:0 -6px;border-radius:var(--r)}
+.about-bg{-webkit-mask-image:none;mask-image:none;overflow:visible}
+.about-bg::after{content:none}
+.about-bg .bg-stage{position:sticky;top:var(--nav-h);height:min(100%,calc(100svh - var(--nav-h)));overflow:hidden;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 24%,#000 76%,transparent),linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(180deg,transparent,#000 24%,#000 76%,transparent),linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent);mask-composite:intersect}
+.about-bg .bg-imgs{position:absolute;inset:0;opacity:.4;filter:saturate(.6) blur(1px)}
+.about-bg .bg-stage::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,color-mix(in srgb,var(--bg2) 35%,transparent),color-mix(in srgb,var(--bg) 50%,transparent))}
+#about .about-bg .bg-slide{position:absolute;inset:0;opacity:0;z-index:0;filter:none;transition:opacity 3s ease-in-out;transform-origin:50% 40%}
+#about .about-bg .bg-slide.prev{opacity:1;z-index:1;transition:none}
+#about .about-bg .bg-slide.on{opacity:1;z-index:2}
+#about .about-bg .bg-slide.kb{animation:bgzoom 14s linear forwards}
+#about .about-bg.paused .bg-slide{animation-play-state:paused}
+/* First appearance only: the first photo starts strong and clear, then slowly fades down to the faint level as the text reveals */
+.about-bg .bg-imgs,.about-bg .bg-stage::after{transition:opacity 3.6s cubic-bezier(.4,0,.2,1),filter 3.6s cubic-bezier(.4,0,.2,1)}
+#about .about-bg.intro .bg-imgs{opacity:.88;filter:none}
+#about .about-bg.intro .bg-stage::after{opacity:.15}
+@keyframes bgzoom{from{transform:scale(1)}to{transform:scale(1.08)}}
+[data-theme="light"] .about-bg .bg-imgs{opacity:.3;filter:saturate(.5) blur(1px)}
+[data-theme="light"] .about-bg .bg-stage::after{background:linear-gradient(180deg,color-mix(in srgb,var(--bg2) 50%,transparent),color-mix(in srgb,var(--bg) 60%,transparent))}
+@media (min-width:900px){.about-copy{padding:36px 30px 26px;margin:0}}
+@media (prefers-reduced-motion:reduce){
+  #about .about-bg .bg-slide{transition:none;animation:none!important}
+  #about .about-bg .bg-slide:not(.lead){display:none}
+  #about .about-bg.intro .bg-imgs{opacity:.4;filter:saturate(.6) blur(1px)}
+  .about-bg .bg-imgs,.about-bg .bg-stage::after{transition:none}
+}

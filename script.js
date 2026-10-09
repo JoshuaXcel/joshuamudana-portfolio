@@ -172,7 +172,7 @@
     course_ds: { status: ["paid", "🔒 Paid course"], title: "Data Science Course", desc: "🔒 This is a paid course. Chat with Excel on WhatsApp to enrol and make payment.", list: ["Python, pandas and data cleaning", "Statistics for data science", "Visualisation and telling stories with data", "SQL with MySQL and PostgreSQL, plus a final project"], tags: ["Data Science", "pandas", "Statistics", "SQL"], cta: ["Chat on WhatsApp to enrol", "https://wa.me/2349064519858?text=Hi%20Excel%2C%20I%27m%20interested%20in%20your%20Data%20Science%20course.%20How%20do%20I%20enrol%20and%20pay%3F"] },
     helpa: { status: ["dev", "In development"], title: "Helpa", desc: "A WhatsApp-based emergency contact discovery system designed to help people find verified emergency service contacts using their location. You send a message and Helpa replies with the nearest verified ambulance, police, fire service or hospital contact, ready to call.", list: ["One message, no app to install: it lives on WhatsApp", "Finds verified emergency contacts by location", "Covers ambulance, police, fire and hospital contacts", "Designed first for FUTA and Akure"], tags: ["Python", "WhatsApp API", "Geolocation", "Bots"] },
     // TODO: Render URL. When TSAS is live, add to this entry: cta: ["Open the live app", "https://YOUR-APP.onrender.com"]
-    tsas: { status: ["soon", "Deploying"], title: "Tech Skill Assessment System", desc: "A skill assessment platform that combines automated scoring, performance analytics, personalized learning pathways, progress tracking and AI-powered recommendations. Built on FastAPI.", list: ["Automated scoring", "Performance analytics and progress tracking", "Personalized learning pathways", "AI-powered recommendations", "FastAPI backend with REST endpoints, deploying now"], tags: ["FastAPI", "Python", "Machine Learning", "Recommenders"] },
+    tsas: { status: ["soon", "Deploying"], title: "Tech Skill Assessment System (Growth Hub)", desc: "A Growth Hub project Joshua builds as a Machine Learning Engineer there: a skill assessment platform that combines automated scoring, performance analytics, personalized learning pathways, progress tracking and AI-powered recommendations. Built on FastAPI.", list: ["Automated scoring", "Performance analytics and progress tracking", "Personalized learning pathways", "AI-powered recommendations", "FastAPI backend with REST endpoints, deploying now", "Owned by Growth Hub"], tags: ["FastAPI", "Python", "Machine Learning", "Recommenders"] },
     tutor: { status: ["live", "Ongoing"], title: "AI/ML Tutoring", desc: "Hands-on machine learning tutoring for learners and beginners. We go from Python basics to cleaning data, training models and shipping them as small apps. 12 learners taught at Growth Hub so far (past & current).", list: ["12 learners taught at Growth Hub (past & current)", "Project-first lessons with real datasets", "Statistics explained simply", "scikit-learn, pandas and FastAPI", "One-on-one or small groups"], tags: ["Teaching", "Python", "scikit-learn", "Statistics"], cta: ["Book a session on WhatsApp", "https://wa.me/2349064519858?text=Hi%20Joshua%2C%20I%27d%20like%20to%20book%20an%20ML%20tutoring%20session"] }
   };
   const modal = $("#modal"); let lastFocus;
@@ -219,23 +219,24 @@
   // Each topic: [patterns, answer]. The topic whose patterns match most often wins; ties go to the earlier topic.
   const KB = [
     [[/helpa/, /emergenc/, /ambulance|police|fire service|hospital/, /whatsapp[- ](based|bot|assistant)|contact (finder|discovery)/], "Helpa is Joshua's WhatsApp-based emergency contact discovery system, in development and not live yet. It's designed to help people find verified emergency service contacts (ambulance, police, fire service, hospital) using their location, with no app to install."],
-    [[/assess|tsas/, /scoring|analytics|learning path|pathway|progress track|recommend/, /render|deploy/], "The Tech Skill Assessment System is a skill assessment platform with automated scoring, performance analytics, personalized learning pathways, progress tracking and AI-powered recommendations. It's built on FastAPI and Joshua is deploying it now."],
+    [[/assess|tsas/, /scoring|analytics|learning path|pathway|progress track|recommend/, /render|deploy/], "The Tech Skill Assessment System is a skill assessment platform with automated scoring, performance analytics, personalized learning pathways, progress tracking and AI-powered recommendations. It's a Growth Hub project: Joshua builds it as a Machine Learning Engineer at Growth Hub, on FastAPI, and it's deploying now."],
+    [[/growth ?hub/, /experience|career|work history|\bjobs?\b|\brole\b|position|employ|where does he work|works? (at|for)|intern(ship)?\b/, /machine learning engineer|\bml engineer/], "Joshua is a Machine Learning Engineer at Growth Hub (Apr 2026 – present; he joined in Feb 2026 as an ML intern). There he builds AI/ML systems, including the Tech Skill Assessment System, which is a Growth Hub project, and teaches Python & ML to 12 learners. Before Growth Hub he was at Excelerate (2024 – 2026), helping manage 3,000+ interns."],
     [[/this (site|portfolio|website|page)|personal portfolio|your portfolio|his portfolio/, /how (was|is) (this|it) (made|built)|who (made|built) this/], "This site is Joshua's Personal Portfolio, a live web project: a responsive single-page site with the typing hero, this Excel's AI chat assistant and locked paid courses wired to WhatsApp, built with HTML, CSS and JavaScript and deployed on GitHub Pages. Code: github.com/JoshuaXcel/joshuamudana-portfolio."],
     [[/dress/, /judicial|futasu|swearing/, /website|web (app|project|site)|live (site|project|link)/, /\bweb\b.*\bproject|project.*\bweb\b/], "A live web project: the FUTASU Judicial Council swearing-in dress-code guide (2026/27 session), with men's and women's tabs, photo examples, a not-permitted list and FAQs. See it at joshuaxcel.github.io/dresscode-app."],
     [[/secur/, /cyber|threat|attack|adversarial|protect|hack/], "Joshua is particularly interested in AI for security and security for AI: using AI to tackle security challenges, and understanding how intelligent systems can be protected against emerging threats."],
     [[/course|enrol|enroll/, /fee|paid|pay|price|cost|how much/, /class/], "Joshua runs two paid courses: an AI & Machine Learning Course (Python, scikit-learn, PyTorch and TensorFlow, deploying with FastAPI) and a Data Science Course (pandas, statistics, visualisation, SQL). To enrol and pay, chat with Excel on WhatsApp at +234 906 451 9858."],
     [[/teach|taught|tutor|mentor/, /learners?\b|students?|pupils?/, /growth hub/, /how many/], "Joshua teaches and mentors learners in AI and Machine Learning: 12 learners taught at Growth Hub so far (past & current). He tutors one-on-one or in small groups, from Python basics to training and shipping real models. Tap the WhatsApp button to book a session."],
-    [[/lead|manag/, /team|people/, /intern|excelerate/, /experience|career|work history|job|judicial|council/], "People & Management: at Excelerate (2024 – 2026, remote) Joshua helped manage 3,000+ interns across global programmes, supporting their onboarding, engagement and progress. He also serves on the FUTA Students' Union Judicial Council (resource and publicity teams)."],
+    [[/lead|manag/, /team|people/, /intern|excelerate/, /experience|career|work history|job|judicial|council/], "Joshua is a Machine Learning Engineer at Growth Hub (Apr 2026 – present; he joined in Feb 2026 as an ML intern), building AI/ML systems including the Tech Skill Assessment System, a Growth Hub project, and teaching Python & ML to 12 learners. Before that, People & Management: at Excelerate (2024 – 2026, remote) Joshua helped manage 3,000+ interns across global programmes, supporting their onboarding, engagement and progress. He also serves on the FUTA Students' Union Judicial Council (resource and publicity teams)."],
     [[/learning (now|next)|currently learning|is he learning|he('s| is) (learning|studying now)|improv|strengthen|working on (himself|his skills)/, /architecture|system design/, /version control|\bgit(hub)?\b|backend engineering/], "Joshua is strengthening his backend engineering, system architecture and version control (Git), so the AI systems he builds are reliable, maintainable and effective."],
     [[/database|\bdb\b/, /\bsql\b|postgres|mysql/], "Joshua works primarily with Python and SQL. For databases he uses PostgreSQL and MySQL, connected to his FastAPI backends."],
     [[/stack|skills?\b|tools?\b|tech\b|technolog|languages?|frameworks?|librar/, /python|numpy|pandas|scikit|sklearn|pytorch|torch|tensorflow|streamlit|fastapi/, /what does he use|know/], "Joshua's stack: Python and SQL, with NumPy, Pandas, Scikit-learn, PyTorch, TensorFlow and Streamlit for data and ML. FastAPI for backend services and REST APIs, PostgreSQL and MySQL for databases, plus WhatsApp bots. People & Management: team leadership (3,000+ interns managed at Excelerate), teaching and mentoring."],
     [[/journey|story|start(ed)?\b|began|begin|(got|get|getting) into|path into|how did he become/, /statistic/, /background/], "Joshua's journey started with Statistics (ND Statistics, Federal College of Forestry, Jos, 2021), which shaped how he thinks about data, patterns and problem-solving. That led him to AI and Machine Learning, where he now builds practical AI-powered systems."],
     [[/service|offer|provide/, /what can (he|you) do|help (me|us) with|freelance|rates?\b|web dev|development/], "Joshua offers four services: 1) AI & Machine Learning, his main focus (models with PyTorch, TensorFlow and scikit-learn, served through FastAPI), 2) Data Science, 3) Web Development (FastAPI with MySQL or PostgreSQL), and 4) AI/ML tutoring and paid courses."],
-    [[/projects?|portfolio|products?/, /build|built|making|working on|create|made/], "Joshua builds practical AI-powered systems. Current projects: the Tech Skill Assessment System (automated scoring, analytics, personalized learning pathways, AI recommendations; deploying now), a WhatsApp-based emergency contact discovery system called Helpa (in development), and two live web projects: the FUTASU Judicial Council dress-code site and this personal portfolio."],
+    [[/projects?|portfolio|products?/, /build|built|making|working on|create|made/], "Joshua builds practical AI-powered systems. Current projects: the Tech Skill Assessment System at Growth Hub (a Growth Hub project: automated scoring, analytics, personalized learning pathways, AI recommendations; deploying now), a WhatsApp-based emergency contact discovery system called Helpa (in development), and two live web projects: the FUTASU Judicial Council dress-code site and this personal portfolio."],
     [[/\bai\b|artificial intelligence|machine learning|\bml\b|deep learning|neural|models?\b/, /data science|data analy|visuali/], "AI and Machine Learning are Joshua's main focus: he processes data, develops models with Scikit-learn, PyTorch and TensorFlow, and connects them to real systems through FastAPI. Data science (cleaning, analysis and clear visuals) sits right beside it."],
     [[/hire|contact|reach|e-?mail|phone|number|call him|book|collab|work with|available|availability/, /cv\b|resume|résumé/], "Joshua is open to AI/ML projects, data science and web work, collaborations and tutoring. Email mudanajoshua@gmail.com or WhatsApp +234 906 451 9858. His CV is under \"Download CV\" at the top of the page."],
     [[/where|location|based|from\b|live[sd]?\b|nigeria|akure|jos\b|plateau|time ?zone|remote/, /futa|universit|school|stud(y|ies|ying)|degree|education|graduat|class of|b\.?tech/], "Joshua is from Jos, Plateau State, and based in Akure, Nigeria (WAT, UTC+1), where he studies Computer Science at the Federal University of Technology, Akure (FUTA), B.Tech class of 2028. He works with clients remotely."],
-    [[/\bwho\b|about (him|joshua|excel|you)|introduce|yourself|\bname\b|nickname|called excel|why excel|\bexcel\b/], "Joshua Mudana, known as Excel: an AI and Machine Learning Engineer and ML tutor from Jos, studying Computer Science at FUTA in Akure. He started with Statistics, now builds practical AI-powered systems with Python, SQL, PyTorch, TensorFlow and FastAPI, teaches ML, and is especially interested in AI for security and security for AI."],
+    [[/\bwho\b|about (him|joshua|excel|you)|introduce|yourself|\bname\b|nickname|called excel|why excel|\bexcel\b/], "Joshua Mudana, known as Excel: a Machine Learning Engineer at Growth Hub and ML tutor from Jos, studying Computer Science at FUTA in Akure. He started with Statistics, now builds practical AI-powered systems with Python, SQL, PyTorch, TensorFlow and FastAPI, teaches ML, and is especially interested in AI for security and security for AI."],
     [[/^\s*(hi|hello|hey|yo|good (morning|afternoon|evening))\b/], "Hey 👋 I'm Excel's AI assistant. Ask me about Joshua's projects, stack, teaching, courses or how to hire him."],
     [[/thank|thanks|cool|nice|great|awesome/], "Anytime! If you'd like to work with Joshua, WhatsApp +234 906 451 9858 or email mudanajoshua@gmail.com."]
   ];
@@ -269,4 +270,84 @@
 
   /* expose for testing */
   window.__portfolio = { openModal, closeModal, toggleAI, ask, toast };
+})();
+
+/* About: slow staggered text reveal, with his photos as a faint background crossfading very slowly behind the text */
+(() => {
+  "use strict";
+  const sec = document.getElementById("about");
+  const box = sec && sec.querySelector("[data-about-bg]");
+  if (!box) return;
+  const bg = box.querySelector(".about-bg");
+  const slides = [...box.querySelectorAll(".bg-slide")];
+  const text = [...sec.querySelectorAll(".seq")];
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const show = el => el.classList.add("in");
+  if (reduce || !("IntersectionObserver" in window)) { text.forEach(show); return; } // first photo only, static
+
+  const STAGGER = 300, HOLD = 7000, FADE = 3000;
+  // first appearance only: the first photo shows strong, then fades down (~3.6 s, CSS) to the faint level as the text reveals
+  const INTRO_SHOW = 700, INTRO_FADE = 3600, LEAD = INTRO_SHOW + 1200;
+  bg.classList.add("intro");
+  let started = false;
+  // each text element shows when its turn has come AND it is on screen (so phone readers still see it arrive)
+  const due = new Map(), seen = new Set();
+  const tryShow = el => { if (seen.has(el) && performance.now() + 30 >= due.get(el)) { show(el); textIO.unobserve(el); } };
+  const textIO = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { seen.add(e.target); const wait = due.get(e.target) - performance.now(); wait > 0 ? setTimeout(() => tryShow(e.target), wait + 40) : tryShow(e.target); }
+  }), { threshold: 0.15 });
+
+  function start() {
+    if (started) return; started = true;
+    const t0 = performance.now();
+    text.forEach((el, i) => { due.set(el, t0 + LEAD + i * STAGGER); textIO.observe(el); });
+    slides[0].classList.add("kb");
+    setTimeout(() => bg.classList.remove("intro"), INTRO_SHOW);
+    setTimeout(loadRest, 1200); // rest load lazily once the text reveal has started
+    firstHold = INTRO_SHOW + INTRO_FADE + HOLD - 2000; // the faint first photo still gets a full-ish hold after its intro
+    schedule(firstHold);
+  }
+
+  /* lazy-load slides 2+ only once the loop is running */
+  let loaded = null;
+  function loadRest() {
+    if (loaded) return loaded;
+    loaded = Promise.all(slides.slice(1).map(img => {
+      if (!img.dataset.src) return Promise.resolve();
+      img.src = img.dataset.src; img.removeAttribute("data-src");
+      return (img.decode ? img.decode() : Promise.resolve()).catch(() => {});
+    }));
+    return loaded;
+  }
+
+  /* very slow crossfade loop (hold ~7 s, fade ~3 s, gentle zoom), paused off-screen and in hidden tabs */
+  let cur = 0, timer = 0, visible = false, firstHold = HOLD, looped = false;
+  const running = () => started && visible && !document.hidden;
+  function schedule(ms) { clearTimeout(timer); timer = setTimeout(advance, ms); }
+  async function advance() {
+    if (!running()) return;
+    await loadRest();
+    let next = (cur + 1) % slides.length;
+    while (next !== cur && !slides[next].naturalWidth) next = (next + 1) % slides.length;
+    if (next === cur) return schedule(HOLD);
+    looped = true;
+    const a = slides[cur], b = slides[next];
+    slides.forEach(s => { if (s !== a) s.classList.remove("prev"); });
+    a.classList.add("prev"); a.classList.remove("on");
+    b.classList.remove("kb"); void b.offsetWidth;
+    b.classList.add("on", "kb");
+    setTimeout(() => { a.classList.remove("prev", "kb"); }, FADE + 100);
+    cur = next; schedule(HOLD + FADE);
+  }
+  function sync() {
+    bg.classList.toggle("paused", !running());
+    if (running()) schedule(looped ? HOLD : firstHold); else clearTimeout(timer);
+  }
+  new IntersectionObserver(es => es.forEach(e => {
+    visible = e.isIntersecting;
+    if (visible && !started) start();
+    sync();
+  }), { threshold: 0, rootMargin: "-12% 0px -12% 0px" }).observe(box);
+  document.addEventListener("visibilitychange", () => { if (started) sync(); });
+  window.__aboutShow = { advance, slides, bg };
 })();
