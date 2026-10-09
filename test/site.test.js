@@ -51,3 +51,18 @@ test("paid courses open an enrol prompt to WhatsApp", () => {
   assert.ok(js.includes("This is a paid course. Chat with Excel on WhatsApp to enrol and make payment."));
   assert.ok(js.includes("wa.me/2349064519858?text=Hi%20Excel"));
 });
+test("about text, teaching count and projects", () => {
+  for (const k of ["My journey started with <strong>Statistics</strong>", "AI and Machine Learning Engineer", "security for AI", "automated scoring, performance analytics, personalized learning pathways", "verified emergency service contacts"])
+    assert.ok(html.includes(k), k);
+  assert.ok(html.includes('data-to="12"') && html.includes("learners taught, Growth Hub"), "hero teaching stat is 12");
+  assert.ok(html.includes("<strong>12 learners</strong> taught at Growth Hub"));
+  assert.ok(js.includes("12 learners taught at Growth Hub"));
+  const cv = fs.readFileSync(path.join(site, "cv.html"), "utf8");
+  assert.ok(cv.includes("12 learners taught"));
+  for (const t of [html, js, cv]) {
+    assert.ok(!/xxiv/i.test(t), "no XXIV");
+    assert.ok(!/(\d[\d,]*\+?)\s+(students|learners)\s+taught/i.test(t.replace(/12 learners taught/g, "")), "only teaching count is 12");
+  }
+  assert.ok(html.includes('data-to="3000"') && html.includes("interns managed"), "3,000+ interns managed stays");
+  assert.ok(/secur\|cyber/.test(js) && js.includes("Streamlit"));
+});

@@ -111,7 +111,7 @@ p strong{color:var(--text)}
 .stats{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:38px;max-width:720px}
 .stats li{padding:14px 16px;border:1px solid var(--line);border-radius:16px;background:var(--card);backdrop-filter:blur(8px)}
 .stats strong{display:block;font-family:var(--head);font-size:1.7rem;font-weight:800;color:var(--text);line-height:1.1}
-.stats li span:not(.count){font-size:.78rem;color:var(--muted)}
+.stats li span:not(.count){display:block;margin-top:4px;font-size:.78rem;line-height:1.35;color:var(--muted)}
 .scroll-cue{position:absolute;left:50%;bottom:18px;width:24px;height:38px;margin-left:-12px;border:2px solid var(--line);border-radius:14px;z-index:2}
 .scroll-cue span{position:absolute;left:50%;top:7px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--blue2);animation:wheel 1.6s infinite}
 @keyframes wheel{to{transform:translateY(12px);opacity:0}}
@@ -327,7 +327,7 @@ p strong{color:var(--text)}
 }
 @media (max-width:639px){.stats li:last-child:nth-child(odd){grid-column:1/-1}}
 @media (min-width:640px){
-  .stats{grid-template-columns:repeat(3,1fr)}
+  .stats{grid-template-columns:repeat(4,1fr)}
   .skills-grid,.projects-grid,.posts{grid-template-columns:repeat(2,1fr)}
 }
 @media (min-width:900px){
@@ -419,3 +419,9 @@ p strong{color:var(--text)}
 .course-badge{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:999px;color:#fff;background:var(--grad)}
 .status.paid{color:#FFD166;background:rgba(255,209,102,.14)}
 @media (min-width:640px){ .courses-grid{grid-template-columns:1fr 1fr} .course .svc-list{grid-template-columns:1fr} }
+
+.about-text p{margin-bottom:14px}
+.about-text p:last-child{margin-bottom:0}
+.skill-note{margin-top:12px;font-size:.8rem;color:var(--muted)}
+.teach-count{margin-top:-6px;color:var(--muted);font-size:.92rem}
+.teach-count strong{color:var(--text)}
