@@ -65,4 +65,8 @@ test("about text, teaching count and projects", () => {
   }
   assert.ok(html.includes('data-to="3000"') && html.includes("interns managed"), "3,000+ interns managed stays");
   assert.ok(/secur\|cyber/.test(js) && js.includes("Streamlit"));
+  assert.ok(html.includes("<h3>People &amp; Management</h3>") && !html.includes("<h3>People</h3>"), "People & Management card");
+  const pm = html.slice(html.indexOf("<h3>People &amp; Management</h3>"), html.indexOf("</article>", html.indexOf("<h3>People &amp; Management</h3>")));
+  assert.ok(pm.includes("Team leadership") && pm.includes("3,000+ interns managed"));
+  assert.ok(cv.includes("People &amp; Management:") && js.includes("People & Management"));
 });
