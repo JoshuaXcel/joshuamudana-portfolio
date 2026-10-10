@@ -483,3 +483,9 @@ p strong{color:var(--text)}
   #about .about-bg.intro .bg-imgs{opacity:.4;filter:saturate(.6) blur(1px)}
   .about-bg .bg-imgs,.about-bg .bg-stage::after{transition:none}
 }
+
+/* About logo (laptop+): shows as soon as About starts, then stays put beside the text until you finish reading it */
+@media (min-width:900px){
+  #about .about-grid{align-items:start}
+  #about .avatar{position:sticky;top:max(calc(var(--nav-h) + 24px),calc(50svh - 150px + var(--nav-h)/2));align-self:start}
+}
