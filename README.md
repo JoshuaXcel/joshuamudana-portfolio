@@ -2,7 +2,7 @@
 
 AI & Machine Learning Engineer. Building Smart Systems.
 
-Live: https://joshuaxcel.github.io/joshuamudana-portfolio/ · also at https://joshuamudana.sites.tab.bot/
+Live: https://joshuaxcel.github.io/joshuamudana-portfolio/
 
 Plain HTML/CSS/JS, no build step.
 
